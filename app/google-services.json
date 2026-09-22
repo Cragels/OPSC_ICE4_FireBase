@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1066806806776",
+    "project_id": "gads-firebase",
+    "storage_bucket": "gads-firebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066806806776:android:45d20f691f4196f56a130d",
+        "android_client_info": {
+          "package_name": "com.example.firebasegads"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0UOq0Q19QPQXWwWGETEwb0uh2vpTu8Uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
