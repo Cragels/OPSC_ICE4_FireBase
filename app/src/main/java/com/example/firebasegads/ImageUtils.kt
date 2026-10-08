@@ -1,4 +1,4 @@
-package main.firebasetest
+package com.example.firebasegads
 
 import android.content.Context
 import android.graphics.Bitmap
