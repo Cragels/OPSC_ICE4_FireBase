@@ -1,4 +1,4 @@
-package main.firebasetest
+package com.example.firebasegads
 
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ServerTimestamp

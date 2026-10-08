@@ -1,4 +1,4 @@
-package main.firebasetest
+package com.example.firebasegads
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater

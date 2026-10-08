@@ -23,7 +23,8 @@
             android:text="No notes yet. Write the first one."
             android:visibility="gone"
             app:layout_constraintTop_toTopOf="@id/notesList"
-            app:layout_constraintBottom_toBottomOf="@id/notesList" />
+            app:layout_constraintBottom_toBottomOf="@id/notesList"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <LinearLayout
             android:id="@+id/editorCard"
