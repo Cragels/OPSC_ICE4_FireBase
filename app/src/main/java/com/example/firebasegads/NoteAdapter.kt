@@ -22,29 +22,35 @@ class NoteAdapter(
         ItemNoteBinding.inflate(LayoutInflater.from(p.context), p, false)
     )
 
-    override fun onBindViewHolder(h: VH, pos: Int) {
+    override fun onBindViewHolder(holder: VH, pos: Int) {
         val note = getItem(pos)
-        h.b.rowTitle.text = note.title
-        h.b.rowBody.text  = note.body
-        h.b.rowTime.text  = note.createdAt?.let { fmt.format(it) } ?: "sending..."
+        holder.b.rowTitle.text = note.title
+        holder.b.rowBody.text  = note.body
+        holder.b.rowTime.text  = note.createdAt?.let { fmt.format(it) } ?: "sending..."
 
         // Always handle both branches — views are recycled
         val bytes = note.image?.toBytes()
+        holder.b.rowImage.isVisible = bytes != null
         if (bytes != null) {
-            h.b.rowImage.isVisible = true
-            Glide.with(h.b.rowImage).load(bytes).into(h.b.rowImage)
+            holder.b.rowImage.setImageBitmap(
+                BitmapFactory.decodeByteArray(bytes, 0, bytes.size))
         } else {
-            h.b.rowImage.isVisible = false
-            Glide.with(h.b.rowImage).clear(h.b.rowImage)
+            holder.b.rowImage.setImageDrawable(null)
         }
 
-        h.b.root.setOnLongClickListener { onDelete(note); true }
+        holder.b.root.setOnLongClickListener { onDelete(note); true }
     }
+
+
     companion object {
         private val fmt = SimpleDateFormat("d MMM, HH:mm", Locale.getDefault())
-        val DIFF = object : DiffUtil.ItemCallback<Note>() {
-            override fun areItemsTheSame(a: Note, b: Note) = a.id == b.id
-            override fun areContentsTheSame(a: Note, b: Note) = a == b
+        private val DIFF = object : DiffUtil.ItemCallback<Note>() {
+            override fun areItemsTheSame(oldItem: Note, newItem: Note) =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: Note, newItem: Note) =
+                oldItem == newItem
         }
+
     }
 }
